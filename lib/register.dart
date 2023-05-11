@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MyRegister extends StatefulWidget {
+class MyRegister extends StatelessWidget {
   const MyRegister({Key? key}) : super(key: key);
 
-  @override
-  State<MyRegister> createState() => _MyRegisterState();
-}
+  static String name="";
+  static String userId="";
 
-class _MyRegisterState extends State<MyRegister> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,12 +41,15 @@ class _MyRegisterState extends State<MyRegister> {
                         child: Column(
                           children: [
                             TextField(
-                              style: const TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Colors.black),
+                              onChanged: (value){
+                                name = value;
+                              },
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -58,7 +59,7 @@ class _MyRegisterState extends State<MyRegister> {
                                   ),
                                 ),
                                 hintText: "Name",
-                                hintStyle: const TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Colors.black),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )
@@ -68,11 +69,14 @@ class _MyRegisterState extends State<MyRegister> {
                               height: 30,
                             ),
                             TextField(
-                              style: const TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Colors.black),
+                              onChanged: (value){
+                                userId = value;
+                              },
                                 decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
-                                    borderSide: const BorderSide(color: Colors.white),
+                                    borderSide: const BorderSide(color: Colors.black),
                                   ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -80,8 +84,8 @@ class _MyRegisterState extends State<MyRegister> {
                                   color: Colors.black,
                                 ),
                               ),
-                              hintText: "Email",
-                              hintStyle: const TextStyle(color: Colors.white),
+                              hintText: "UserId",
+                              hintStyle: const TextStyle(color: Colors.black),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )
@@ -91,12 +95,12 @@ class _MyRegisterState extends State<MyRegister> {
                               height: 30,
                             ),
                             TextField(
-                              style: const TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Colors.black),
                               obscureText: true,
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: const BorderSide(color: Colors.white),
+                                  borderSide: const BorderSide(color: Colors.black),
                                   ),
 
                               focusedBorder: OutlineInputBorder(
@@ -106,7 +110,7 @@ class _MyRegisterState extends State<MyRegister> {
                                 ),
                               ),
                               hintText: "password",
-                              hintStyle: const TextStyle(color: Colors.white),
+                              hintStyle: const TextStyle(color: Colors.black),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )
@@ -121,7 +125,7 @@ class _MyRegisterState extends State<MyRegister> {
                                   const Text(
                                     'Sign Up',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontSize: 27,
                                       fontWeight: FontWeight.w700
                                     ),
@@ -132,7 +136,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     child: IconButton(
                                       color: Colors.white,
                                       onPressed: () {
-                                        Navigator.pushNamed(context, 'phone');
+                                        Navigator.pushNamed(context, 'home');
                                       },
                                       icon: const Icon(
                                         Icons.arrow_forward,
@@ -156,7 +160,7 @@ class _MyRegisterState extends State<MyRegister> {
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         decoration: TextDecoration.underline,
-                                        color: Colors.white,
+                                        color: Colors.black,
                                         fontSize: 18
                                       ),
                                     ),

@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyPhone extends StatefulWidget {
   const MyPhone({Key? key}) : super(key: key);
+
+  static String verify = "";
 
   @override
   State<MyPhone> createState() => _MyPhoneState();
@@ -9,9 +12,11 @@ class MyPhone extends StatefulWidget {
 
 class _MyPhoneState extends State<MyPhone> {
   TextEditingController countryController = TextEditingController();
+  var phone="";
 
-  void iniState()
-  {
+  @override
+  void initState() {
+    // TODO: implement initState
     countryController.text = "+91";
     super.initState();
   }
@@ -19,18 +24,6 @@ class _MyPhoneState extends State<MyPhone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: (){
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios_rounded,
-          color: Colors.black,)
-        ),
-        elevation: 0,
-      ),
       body: Container(
         margin: const EdgeInsets.only(left: 25, right: 25),
         alignment: Alignment.center,
@@ -38,14 +31,27 @@ class _MyPhoneState extends State<MyPhone> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/img1.png', width: 150, height: 150,),
-              const SizedBox(height: 25,),
-              const Text("Phone Verification",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              Image.asset(
+                'assets/img1.png',
+                width: 150,
+                height: 150,
               ),
-              const Text("we need to register your phone before getting started",
-              style: TextStyle(fontSize: 16,),
-              textAlign: TextAlign.center,
+              const SizedBox(
+                height: 25,
+              ),
+              const Text(
+                "Phone Verification",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                "We need to register your phone without getting started!",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 30,
@@ -53,13 +59,14 @@ class _MyPhoneState extends State<MyPhone> {
               Container(
                 height: 55,
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1, color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10)),
+                    border: Border.all(width: 1, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(width: 10,),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     SizedBox(
                       width: 40,
                       child: TextField(
@@ -72,12 +79,15 @@ class _MyPhoneState extends State<MyPhone> {
                     ),
                     const Text(
                       "|",
-                      style: TextStyle(fontSize: 33, color: Colors.grey),
+                      style: TextStyle(fontSize: 40, color: Colors.grey),
                     ),
                     const SizedBox(width: 10,),
-                    const Expanded(child: TextField(
+                    Expanded(child: TextField(
                       keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
+                      onChanged: (value){
+                        phone=value;
+                      },
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "Phone Number",
                       ),
@@ -85,26 +95,35 @@ class _MyPhoneState extends State<MyPhone> {
                   ],
                 ),
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 20,
+              ),
               SizedBox(
                 width: double.infinity,
                 height: 45,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue.shade700,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)
-                    )
-                  ),
-                  onPressed: (){
-                    Navigator.pushNamed(context, 'verify');
-                  },
-                  child: const Text("send the code"),
-                ),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    onPressed: () async{
+                      await FirebaseAuth.instance.verifyPhoneNumber(
+                        phoneNumber: countryController.text+phone,
+                        verificationCompleted: (PhoneAuthCredential credential) {},
+                        verificationFailed: (FirebaseAuthException e) {},
+                        codeSent: (String verificationId, int? resendToken) {
+                          MyPhone.verify = verificationId;
+                          Navigator.pushNamed(context, 'verify');
+                        },
+                        codeAutoRetrievalTimeout: (String verificationId) {},
+                      );
+                    },
+                    //
+                    child: const Text("Send the code")),
               )
             ],
           ),
-        )
+        ),
       ),
     );
   }

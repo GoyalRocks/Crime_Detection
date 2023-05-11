@@ -18,8 +18,22 @@ class _HomeState extends State<Home> {
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent
+      ),
+      backgroundColor: Colors.white,
+      body: Container(
+        margin: const EdgeInsets.only(left: 30, right: 30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: (){
+              Navigator.pushNamed(context, 'video');
+            }, child: const Text("Go Live"))
+          ],
+        ),
+      ),
     );
   }
 }
