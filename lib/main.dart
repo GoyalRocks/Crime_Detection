@@ -12,7 +12,7 @@ void main() async{
   await Firebase.initializeApp();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'home',
+    initialRoute: 'register',
     routes: {
       'verify' : (context) => const MyVerify(),
       'register': (context) => const MyRegister(),
