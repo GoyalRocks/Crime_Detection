@@ -24,6 +24,26 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         title: const Text("Home"),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children:  [
+            const DrawerHeader(decoration: BoxDecoration(color: Colors.blueAccent),
+                child: Text('jfhfgdfjh'),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('page 1'),
+              onTap: (){},
+            ),
+            ListTile(
+              leading: Icon(Icons.train),
+              title: Text('page 2'),
+              onTap: (){},
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Container(
         margin: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 30),

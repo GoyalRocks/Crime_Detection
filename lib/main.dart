@@ -1,4 +1,5 @@
 import 'package:crime_detection/home_page.dart';
+import 'package:crime_detection/incident.dart';
 import 'package:crime_detection/login.dart';
 import 'package:crime_detection/phone_otp.dart';
 import 'package:crime_detection/real_time_face_detection.dart';
@@ -12,7 +13,7 @@ void main() async{
   await Firebase.initializeApp();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'register',
+    initialRoute: 'incident',
     routes: {
       'verify' : (context) => const MyVerify(),
       'register': (context) => const MyRegister(),
@@ -20,7 +21,9 @@ void main() async{
       'login': (context) => const MyLogin(),
       'home': (context) => const Home(),
       'video': (context) => const Video(),
+      'incident': (context)=> const Incident(),
     },
 
-  ));
+  ),
+  );
 }
