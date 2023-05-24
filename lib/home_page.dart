@@ -28,17 +28,19 @@ class _HomeState extends State<Home> {
         child: ListView(
           padding: EdgeInsets.zero,
           children:  [
-            const DrawerHeader(decoration: BoxDecoration(color: Colors.blueAccent),
-                child: Text('jfhfgdfjh'),
-            ),
+            const UserAccountsDrawerHeader(accountName: Text('Harsh Goyal'), accountEmail: Text('harshgoyal8nov2001@gmail.com'),decoration: BoxDecoration(color: Colors.blueAccent),
+            currentAccountPicture: CircleAvatar(radius: 50.0,
+              backgroundColor: Color(0xFF778899),
+              backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg'),
+            ),),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('page 1'),
+              leading: const Icon(Icons.home),
+              title: const Text('page 1'),
               onTap: (){},
             ),
             ListTile(
-              leading: Icon(Icons.train),
-              title: Text('page 2'),
+              leading: const Icon(Icons.train),
+              title: const Text('page 2'),
               onTap: (){},
             ),
           ],
@@ -58,15 +60,15 @@ class _HomeState extends State<Home> {
                       child: Material(
                         color: Colors.blueAccent,
                         child: InkWell(
-                          splashColor: Colors.white,
+                          splashColor: Colors.black54,
                           onTap: () {
                             Navigator.pushNamed(context, 'video');
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const <Widget>[
-                              Icon(Icons.stream, size: 50,), // <-- Icon
-                              Text("Go Live"), // <-- Text
+                              Icon(Icons.stream, size: 50,color: Colors.white,), // <-- Icon
+                              Text("Go Live",style: TextStyle(color: Colors.white),), // <-- Text
                             ],
                           ),
                         ),
@@ -80,15 +82,14 @@ class _HomeState extends State<Home> {
                       child: Material(
                         color: Colors.blueAccent,
                         child: InkWell(
-                          splashColor: Colors.white,
+                          splashColor: Colors.black54,
                           onTap: () {
-
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const <Widget>[
-                              Icon(Icons.location_on_outlined, size: 40,), // <-- Icon
-                              Text("Locate\nLocation"), // <-- Text
+                              Icon(Icons.location_on_outlined, size: 40,color: Colors.white,), // <-- Icon
+                              Text("Locate\nLocation",style: TextStyle(color: Colors.white),), // <-- Text
                             ],
                           ),
                         ),
@@ -102,15 +103,15 @@ class _HomeState extends State<Home> {
                       child: Material(
                         color: Colors.blueAccent,
                         child: InkWell(
-                          splashColor: Colors.white,
+                          splashColor: Colors.black54,
                           onTap: () {
-
+                            Navigator.pushNamed(context, 'incident');
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const <Widget>[
-                              Icon(Icons.policy_outlined, size: 40,), // <-- Icon
-                              Text("Report\nIncident"), // <-- Text
+                              Icon(Icons.policy_outlined, size: 40,color: Colors.white,), // <-- Icon
+                              Text("Report\nIncident",style: TextStyle(color: Colors.white),), // <-- Text
                             ],
                           ),
                         ),
