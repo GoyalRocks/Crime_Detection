@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     //we use future to go from one screen to other via duration time
-    Future.delayed(Duration(seconds: 5), (){
+    Future.delayed(const Duration(seconds: 5), (){
       //no return when user is on login screen and press back, it will not return the
       //user to the splash screen;
       Navigator.pushNamedAndRemoveUntil(context, 'phone', (route) => false);
@@ -35,8 +35,8 @@ class _SplashScreenState extends State<SplashScreen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('School', style: Theme.of(context).textTheme.headline5),
-                Text('Brain', style: Theme.of(context).textTheme.headline5),
+                Text('School', style: Theme.of(context).textTheme.headlineSmall),
+                Text('Brain', style: Theme.of(context).textTheme.headlineSmall),
               ],
             ),
             Image.asset(
