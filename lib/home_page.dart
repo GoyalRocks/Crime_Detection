@@ -34,13 +34,23 @@ class _HomeState extends State<Home> {
               backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg'),
             ),),
             ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('page 1'),
+              leading: const Icon(Icons.account_box_outlined),
+              title: const Text('Account'),
               onTap: (){},
             ),
             ListTile(
-              leading: const Icon(Icons.train),
-              title: const Text('page 2'),
+              leading: const Icon(Icons.settings),
+              title: const Text('Setting'),
+              onTap: (){},
+            ),
+            ListTile(
+              leading: const Icon(Icons.contact_support),
+              title: const Text('Contact US'),
+              onTap: (){},
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('Log out'),
               onTap: (){},
             ),
           ],
@@ -48,7 +58,7 @@ class _HomeState extends State<Home> {
       ),
       backgroundColor: Colors.white,
       body: Container(
-        margin: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 30),
+        margin: const EdgeInsets.only(left: 10, right: 10, top: 30, bottom: 30),
         child: Center(
           child: Column(
             children: [
@@ -84,6 +94,7 @@ class _HomeState extends State<Home> {
                         child: InkWell(
                           splashColor: Colors.black54,
                           onTap: () {
+                            Navigator.pushNamed(context, 'map');
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -119,7 +130,32 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ],
-              )
+              ),
+              const SizedBox(height: 20,),
+               Row(
+                  children: [
+                    SizedBox.fromSize(
+                      size: const Size(100, 100),
+                      child: ClipOval(
+                        child: Material(
+                          color: Colors.blueAccent,
+                          child: InkWell(
+                            splashColor: Colors.black54,
+                            onTap: () {
+                              Navigator.pushNamed(context, 'sos');
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const <Widget>[
+                                Icon(Icons.sos_rounded, size: 60,color: Colors.white,),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
             ],
           )
         ),

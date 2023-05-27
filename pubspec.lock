@@ -161,6 +161,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  country_state_city_picker:
+    dependency: "direct main"
+    description:
+      name: country_state_city_picker
+      sha256: "509c282165df329ee5a29babb28e13dce3bc32166cea21b202a49c44d20cfef3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.8"
   cross_file:
     dependency: transitive
     description:
@@ -177,6 +185,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  csc_picker:
+    dependency: "direct main"
+    description:
+      name: csc_picker
+      sha256: "7e5d6023a81f53b89a7fb0369953fd4dc676f7ea20e9a0c0707973a5f0aedf14"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.7"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -757,6 +773,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.8.3"
+  sizer:
+    dependency: "direct main"
+    description:
+      name: sizer
+      sha256: d2b3cb6cbc4a637f508dacd786bae55df31e5fc088044248a43e4fd1e050c117
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.15"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -858,6 +882,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
+  universal_io:
+    dependency: transitive
+    description:
+      name: universal_io
+      sha256: "06866290206d196064fd61df4c7aea1ffe9a4e7c4ccaa8fcded42dd41948005d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   universal_platform:
     dependency: transitive
     description:
@@ -979,5 +1011,5 @@ packages:
     source: hosted
     version: "2.3.2"
 sdks:
-  dart: ">=2.19.6 <3.0.0"
+  dart: ">=2.19.0 <3.0.0"
   flutter: ">=3.7.0"

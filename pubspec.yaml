@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=2.17.6 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -51,6 +51,9 @@ dependencies:
   image_cropper: ^4.0.1
   flutter_image_compress: ^2.0.3
   get: ^4.6.5
+  country_state_city_picker: ^1.2.8
+  csc_picker: ^0.2.7
+  sizer: ^2.0.15
 
 dev_dependencies:
   flutter_test:

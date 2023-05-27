@@ -1,10 +1,14 @@
 import 'package:crime_detection/home_page.dart';
 import 'package:crime_detection/incident.dart';
 import 'package:crime_detection/login.dart';
+import 'package:crime_detection/map.dart';
 import 'package:crime_detection/phone_otp.dart';
 import 'package:crime_detection/real_time_face_detection.dart';
 import 'package:crime_detection/register.dart';
+import 'package:crime_detection/sos.dart';
+import 'package:crime_detection/splash.dart';
 import 'package:crime_detection/verify.dart';
+import 'package:crime_detection/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +18,8 @@ void main() async{
   await Firebase.initializeApp();
   runApp( GetMaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'home',
+    title: 'Crime Detection',
+    initialRoute: 'splash',
     routes: {
       'verify' : (context) => const MyVerify(),
       'register': (context) => const MyRegister(),
@@ -23,6 +28,10 @@ void main() async{
       'home': (context) => const Home(),
       'video': (context) => const Video(),
       'incident': (context)=> const Incident(),
+      'sos': (context)=> const SOS(),
+      'map': (context)=> const MyMap(),
+      'welcome': (context)=> const WelcomeScreen(),
+      'splash': (context)=> SplashScreen(),
     },
 
   ),
