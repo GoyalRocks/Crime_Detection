@@ -136,7 +136,7 @@ class MyRegister extends StatelessWidget {
                                     child: IconButton(
                                       color: Colors.white,
                                       onPressed: () {
-                                        Navigator.pushNamed(context, 'home');
+                                        Navigator.pushNamed(context, 'welcome');
                                       },
                                       icon: const Icon(
                                         Icons.arrow_forward,

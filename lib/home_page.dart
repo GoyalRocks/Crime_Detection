@@ -1,5 +1,9 @@
+import 'package:crime_detection/notification.dart';
+import 'package:crime_detection/sos.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sizer/sizer.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,6 +13,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  int currentIndex = 0;
+
+  final screens = [
+    Home(),
+    SOS(),
+    Notifications(),
+  ];
+
   void requestPermission()async{
     var status  = await Permission.storage.status;
     if(!status.isGranted)
@@ -56,108 +69,138 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
+        backgroundColor: Colors.blue.shade200,
+        onTap: (index) => setState(() => currentIndex = index),
+        currentIndex: currentIndex,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home,size: 30,),
+              label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sos,size: 30,),
+            label: 'SoS'
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications_on,size: 30,),
+              label: 'Notification'
+          ),
+        ]
+      ),
       backgroundColor: Colors.white,
-      body: Container(
+      body:
+      Container(
         margin: const EdgeInsets.only(left: 10, right: 10, top: 30, bottom: 30),
         child: Center(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  SizedBox.fromSize(
-                    size: const Size(100, 100),
-                    child: ClipOval(
-                      child: Material(
-                        color: Colors.blueAccent,
-                        child: InkWell(
-                          splashColor: Colors.black54,
-                          onTap: () {
-                            Navigator.pushNamed(context, 'video');
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const <Widget>[
-                              Icon(Icons.stream, size: 50,color: Colors.white,), // <-- Icon
-                              Text("Go Live",style: TextStyle(color: Colors.white),), // <-- Text
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 30,),
-                  SizedBox.fromSize(
-                    size: const Size(100, 100),
-                    child: ClipOval(
-                      child: Material(
-                        color: Colors.blueAccent,
-                        child: InkWell(
-                          splashColor: Colors.black54,
-                          onTap: () {
-                            Navigator.pushNamed(context, 'map');
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const <Widget>[
-                              Icon(Icons.location_on_outlined, size: 40,color: Colors.white,), // <-- Icon
-                              Text("Locate\nLocation",style: TextStyle(color: Colors.white),), // <-- Text
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 30,),
-                  SizedBox.fromSize(
-                    size: const Size(100, 100),
-                    child: ClipOval(
-                      child: Material(
-                        color: Colors.blueAccent,
-                        child: InkWell(
-                          splashColor: Colors.black54,
-                          onTap: () {
-                            Navigator.pushNamed(context, 'incident');
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const <Widget>[
-                              Icon(Icons.policy_outlined, size: 40,color: Colors.white,), // <-- Icon
-                              Text("Report\nIncident",style: TextStyle(color: Colors.white),), // <-- Text
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20,),
-               Row(
+            child: Column(
+              children: [
+                Row(
                   children: [
-                    SizedBox.fromSize(
-                      size: const Size(100, 100),
-                      child: ClipOval(
-                        child: Material(
-                          color: Colors.blueAccent,
-                          child: InkWell(
-                            splashColor: Colors.black54,
-                            onTap: () {
-                              Navigator.pushNamed(context, 'sos');
-                            },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const <Widget>[
-                                Icon(Icons.sos_rounded, size: 60,color: Colors.white,),
-                              ],
-                            ),
+                    InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context, 'video');
+                      },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Ink.image(
+                              image: const AssetImage('assets/instagram_live.png'),
+                            height: 22.h,
+                            width: 45.w,
+                            fit: BoxFit.cover,
                           ),
-                        ),
-                      ),
+                          const SizedBox(height: 6,),
+                          const Text('Go Live',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 3,),
+                        ],
+                      )
+                    ),
+                    const SizedBox(width: 20,),
+                    InkWell(
+                        onTap: (){
+                          Navigator.pushNamed(context, 'map');
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Ink.image(
+                              image: const AssetImage('assets/Navigation.png'),
+                              height: 22.h,
+                              width: 45.w,
+                              fit: BoxFit.cover,
+                            ),
+                            const SizedBox(height: 3,),
+                            const Text('Track My \nLocation',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 6,),
+                          ],
+                        )
                     ),
                   ],
                 ),
-            ],
-          )
+                Row(
+                  children: [
+                    InkWell(
+                        onTap: (){
+                          Navigator.pushNamed(context, 'incident');
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Ink.image(
+                              image: const AssetImage('assets/incident.jpg'),
+                              height: 22.h,
+                              width: 45.w,
+                              fit: BoxFit.cover,
+                            ),
+                            const SizedBox(height: 3,),
+                            const Text('Report an Incident',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 6,),
+                          ],
+                        )
+                    ),
+                    const SizedBox(width: 20,),
+                    InkWell(
+                        onTap: (){
+                          Navigator.pushNamed(context, 'map');
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Ink.image(
+                              image: const AssetImage('assets/Emergency_call.png'),
+                              height: 22.h,
+                              width: 45.w,
+                              fit: BoxFit.cover,
+                            ),
+                            const SizedBox(height: 3,),
+                            const Text('Emergency calls',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 6,),
+                          ],
+                        )
+                    ),
+                  ],
+                )
+              ],
+            )
         ),
       ),
     );

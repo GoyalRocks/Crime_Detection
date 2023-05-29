@@ -1,10 +1,9 @@
-import 'package:crime_detection/phone_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class SplashScreen extends StatefulWidget {
-  //route name for our screen
-  static String routeName = 'SplashScreen';
+
+  const SplashScreen({super.key});
 
 
   @override
@@ -17,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     //we use future to go from one screen to other via duration time
-    Future.delayed(const Duration(seconds: 5), (){
+    Future.delayed(const Duration(seconds: 10), (){
       //no return when user is on login screen and press back, it will not return the
       //user to the splash screen;
       Navigator.pushNamedAndRemoveUntil(context, 'phone', (route) => false);
@@ -27,24 +26,18 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     //scaffold color set to primary color in main in our text theme
     return Scaffold(
-      //its a row with a column
+      backgroundColor: const Color(0xff1d5b84),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('School', style: Theme.of(context).textTheme.headlineSmall),
-                Text('Brain', style: Theme.of(context).textTheme.headlineSmall),
-              ],
-            ),
             Image.asset(
-              'assets/instagram_live.png',
-              //25% of height & 50% of width
-              height: 25.h,
-              width: 50.w,
+              'assets/welcome2.png',
+              height: 50.h,
+              width: 100.w,
             ),
+            Text('Crime', style: Theme.of(context).textTheme.headlineLarge,),
+            Text('Detection', style: Theme.of(context).textTheme.headlineLarge),
           ],
         ),
       ),

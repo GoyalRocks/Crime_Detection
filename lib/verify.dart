@@ -106,7 +106,9 @@ class _MyVerifyState extends State<MyVerify> {
                   ),
                   onPressed: () async{
                     try{
-                      PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: MyPhone.verify, smsCode: code);
+                      PhoneAuthCredential credential = PhoneAuthProvider.
+                      credential(
+                          verificationId: MyPhone.verify, smsCode: code);
 
                       // Sign the user in (or link) with the credential
                       await auth.signInWithCredential(credential);

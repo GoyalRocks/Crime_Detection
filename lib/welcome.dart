@@ -15,21 +15,23 @@ class WelcomeScreen extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(
-                    color: Colors.black87,
+                    color: Color(0xff1d5b84),
                     borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(50)
                     )
                   ),
                   child: Column(
                     children: [
-                      Expanded(child: Image.asset("assets/welcome.png"))
+                      Expanded(child: Image.asset("assets/welcome.jpg"),
+                      )
                     ],
                   ),
-            )),
+            ),
+            ),
             Expanded(
               flex: 2,
                 child: Container(
-                  color: Colors.black87,
+                  color: Color(0xff1d5b84),
                   child: Container(
                     width: double.infinity,
                     decoration: const BoxDecoration(

@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart' as loc;
-import 'package:firebase_core/firebase_core.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'crt.dart';
 
@@ -17,7 +16,7 @@ class _MyMapState extends State<MyMap> {
 
   final loc.Location location = loc.Location();
   StreamSubscription<loc.LocationData>? _locationSubscription;
-  @override
+
   void inistate(){
     super.initState();
     _requestPermission();
@@ -90,13 +89,13 @@ class _MyMapState extends State<MyMap> {
 
   _getLocation() async{
     try{
-      final loc.LocationData _locationResult = await location.getLocation();
+      final loc.LocationData locationResult = await location.getLocation();
       await FirebaseFirestore.instance
           .collection('location')
           .doc('user1')
           .set({
-        'latitude': _locationResult.latitude,
-        'longitude': _locationResult.longitude,
+        'latitude': locationResult.latitude,
+        'longitude': locationResult.longitude,
         'name': 'Harsh'
       },SetOptions(merge: true)
       );
